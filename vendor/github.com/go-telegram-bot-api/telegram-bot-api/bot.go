@@ -898,3 +898,89 @@ func (bot *BotAPI) UnpinChatMessage(config UnpinChatMessageConfig) (APIResponse,
 
 	return bot.MakeRequest(config.method(), v)
 }
+
+func (bot *BotAPI) GetStickerSet(stickerSetName string) (StickerSet, error) {
+	v := url.Values{}
+	v.Add("name", stickerSetName)
+	resp, err := bot.MakeRequest("getStickerSet", v)
+	if err != nil {
+		return StickerSet{}, err
+	}
+
+	var stickerSet StickerSet
+	err = json.Unmarshal(resp.Result, &stickerSet)
+
+	return stickerSet, err
+}
+
+func (bot *BotAPI) CreateNewStickerSet(config CreateNewStickerSetConfig) (bool, error) {
+	return bot.stickerReq("createNewStickerSet", config)
+}
+
+func (bot *BotAPI) AddStickerToSet(config AddStickerToSetConfig) (bool, error) {
+	return bot.stickerReq("addStickerToSet", config)
+}
+
+func (bot *BotAPI) stickerReq(funcName string, config Stickerable) (bool, error) {
+	ms := multipartstreamer.New()
+	params, err := config.params()
+	if err != nil {
+		return false, err
+	}
+	fieldname := "png_sticker"
+
+	switch f := config.getPngSticker().(type) {
+	case []byte:
+		ms.WriteFields(params)
+		ms.WriteReader(fieldname, config.getEmojis(), int64(len(config.getPngSticker().([]byte))), bytes.NewReader(config.getPngSticker().([]byte)))
+	case url.URL:
+		params[fieldname] = f.String()
+
+		ms.WriteFields(params)
+	default:
+		return false, errors.New(ErrBadFileType)
+	}
+
+	method := fmt.Sprintf(APIEndpoint, bot.Token, funcName)
+
+	req, err := http.NewRequest("POST", method, nil)
+	if err != nil {
+		return false, err
+	}
+
+	ms.SetupRequest(req)
+
+	res, err := bot.Client.Do(req)
+	if err != nil {
+		return false, err
+	}
+	defer res.Body.Close()
+
+	bytes, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return false, err
+	}
+
+	if bot.Debug {
+		log.Println(string(bytes))
+	}
+
+	var apiResp APIResponse
+
+	err = json.Unmarshal(bytes, &apiResp)
+	if err != nil {
+		return false, err
+	}
+
+	if !apiResp.Ok {
+		return false, errors.New(apiResp.Description)
+	}
+	var ret bool
+	err = json.Unmarshal(apiResp.Result, &ret)
+	if err != nil {
+		return false, err
+	}
+
+	return ret, nil
+
+}

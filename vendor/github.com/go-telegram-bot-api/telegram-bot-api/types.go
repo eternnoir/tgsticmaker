@@ -292,6 +292,20 @@ type Sticker struct {
 	FileSize  int        `json:"file_size"` // optional
 }
 
+type StickerSet struct {
+	Name          string     `json:"name"`
+	Title         string     `json:"title"`
+	ContainsMasks bool       `json:"contains_masks"`
+	Stickers      []*Sticker `json:"stickers"`
+}
+
+type MaskPosition struct {
+	Point  string  `json:"point"`
+	XShift float64 `json:"x_shift"`
+	YShift float64 `json:"y_shift"`
+	Scale  float64 `json:"scale"`
+}
+
 // Video contains information about a video.
 type Video struct {
 	FileID    string     `json:"file_id"`
@@ -410,7 +424,7 @@ type InlineKeyboardButton struct {
 	SwitchInlineQuery            *string       `json:"switch_inline_query,omitempty"`              // optional
 	SwitchInlineQueryCurrentChat *string       `json:"switch_inline_query_current_chat,omitempty"` // optional
 	CallbackGame                 *CallbackGame `json:"callback_game,omitempty"`                    // optional
-	Pay                          bool          `json:"pay,omitempty"`			       // optional
+	Pay                          bool          `json:"pay,omitempty"`                              // optional
 }
 
 // CallbackQuery is data sent when a keyboard button with callback data
@@ -657,7 +671,7 @@ type InlineQueryResultGame struct {
 	Type          string                `json:"type"`
 	ID            string                `json:"id"`
 	GameShortName string                `json:"game_short_name"`
-	ReplyMarkup   *InlineKeyboardMarkup `json:"reply_markup"`
+	ReplyMarkup   *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // ChosenInlineResult is an inline query result chosen by a User

@@ -676,7 +676,7 @@ type SetGameScoreConfig struct {
 	Score              int
 	Force              bool
 	DisableEditMessage bool
-	ChatID             int
+	ChatID             int64
 	ChannelUsername    string
 	MessageID          int
 	InlineMessageID    string
@@ -689,7 +689,7 @@ func (config SetGameScoreConfig) values() (url.Values, error) {
 	v.Add("score", strconv.Itoa(config.Score))
 	if config.InlineMessageID == "" {
 		if config.ChannelUsername == "" {
-			v.Add("chat_id", strconv.Itoa(config.ChatID))
+			v.Add("chat_id", strconv.FormatInt(config.ChatID, 10))
 		} else {
 			v.Add("chat_id", config.ChannelUsername)
 		}
@@ -1038,8 +1038,8 @@ func (config DeleteMessageConfig) values() (url.Values, error) {
 
 // PinChatMessageConfig contains information of a message in a chat to pin.
 type PinChatMessageConfig struct {
-	ChatID int64
-	MessageID int
+	ChatID              int64
+	MessageID           int
 	DisableNotification bool
 }
 
@@ -1072,4 +1072,67 @@ func (config UnpinChatMessageConfig) values() (url.Values, error) {
 	v.Add("chat_id", strconv.FormatInt(config.ChatID, 10))
 
 	return v, nil
+}
+
+type Stickerable interface {
+	params() (map[string]string, error)
+	getPngSticker() interface{}
+	getEmojis() string
+}
+
+type BaseStickerConfig struct {
+	UserId       int64
+	Name         string
+	PngSticker   interface{}
+	Emojis       string
+	MaskPosition interface{}
+}
+
+func (config BaseStickerConfig) params() (map[string]string, error) {
+	params := make(map[string]string)
+	params["user_id"] = strconv.FormatInt(config.UserId, 10)
+	params["name"] = config.Name
+	params["emojis"] = config.Emojis
+	if config.MaskPosition != nil {
+		data, err := json.Marshal(config.MaskPosition)
+		if err != nil {
+			return nil, err
+		}
+		params["mask_position"] = string(data)
+	}
+	return params, nil
+}
+
+func (config BaseStickerConfig) getPngSticker() interface{} {
+	return config.PngSticker
+}
+
+func (config BaseStickerConfig) getEmojis() string {
+	return config.Emojis
+}
+
+// CreateNewStickerSetConfig contains information of createNewStickerSet method.
+type CreateNewStickerSetConfig struct {
+	BaseStickerConfig
+	Title         string
+	ContainsMasks bool
+}
+
+func (config CreateNewStickerSetConfig) params() (map[string]string, error) {
+	params, err := config.BaseStickerConfig.params()
+	if err != nil {
+		return nil, err
+	}
+	params["title"] = config.Title
+	params["contains_masks"] = strconv.FormatBool(config.ContainsMasks)
+
+	return params, nil
+}
+
+type AddStickerToSetConfig struct {
+	BaseStickerConfig
+}
+
+func (config AddStickerToSetConfig) params() (map[string]string, error) {
+	return config.BaseStickerConfig.params()
 }

@@ -16,7 +16,7 @@ import (
 
 var (
 	aDebug   = false
-	aAddress = ""
+	aPORT    = ""
 	aTgToken = ""
 	aBotName = ""
 )
@@ -29,11 +29,11 @@ var flags = []cli.Flag{
 		Destination: &aDebug,
 	},
 	cli.StringFlag{
-		Name:        "addr, a",
-		Usage:       "Server listen address. e.g. 0.0.0.0:8458",
-		Value:       "0.0.0.0:8458",
-		EnvVar:      "ADDR",
-		Destination: &aAddress,
+		Name:        "port, p",
+		Usage:       "Server listen port. e.g. 8458",
+		Value:       "8458",
+		EnvVar:      "PORT",
+		Destination: &aPORT,
 	},
 	cli.StringFlag{
 		Name:        "token, t",
@@ -83,7 +83,7 @@ func start(c *cli.Context) error {
 	ser := &server.Server{
 		Maker: stickerMaker,
 	}
-	return ser.Start(aAddress)
+	return ser.Start("0.0.0.0:" + aPORT)
 }
 
 func make(c *cli.Context) error {

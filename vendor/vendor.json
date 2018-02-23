@@ -1,0 +1,146 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "+TKtBzv23ywvmmqRiGEjUba4YmI=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "dbeaa9332f19a944acb5736b4456cfcc02140e29",
+			"revisionTime": "2017-10-19T21:57:19Z"
+		},
+		{
+			"checksumSHA1": "p5z5hdUt68Z3tK7Is+yLGrCNzoA=",
+			"path": "github.com/fatih/color",
+			"revision": "5df930a27be2502f99b292b7cc09ebad4d0891f4",
+			"revisionTime": "2017-09-26T11:14:11Z"
+		},
+		{
+			"checksumSHA1": "yhTI1tcp7ywDVX7WtjIIsrzl+GI=",
+			"path": "github.com/go-telegram-bot-api/telegram-bot-api",
+			"revision": "b20ddf094665700734ea960afad6ad441f65c5da",
+			"revisionTime": "2018-02-23T17:10:16Z"
+		},
+		{
+			"checksumSHA1": "u8jlqAEE742G6/GJUrSvPqXVmGQ=",
+			"path": "github.com/labstack/echo",
+			"revision": "b6040409eeceaac178c95fe73498b5f992e6b668",
+			"revisionTime": "2018-01-13T19:40:39Z"
+		},
+		{
+			"checksumSHA1": "3kndREvBCGQ58AHQlJ0rromPADM=",
+			"path": "github.com/labstack/echo/middleware",
+			"revision": "b6040409eeceaac178c95fe73498b5f992e6b668",
+			"revisionTime": "2018-01-13T19:40:39Z"
+		},
+		{
+			"checksumSHA1": "NvfQq6Y6kh9cMw+y1m00ivEd5b4=",
+			"path": "github.com/labstack/gommon/bytes",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "R6DzcBLEP0BONPpsyr+11N7xh5w=",
+			"path": "github.com/labstack/gommon/color",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "uHA6zbtxzJce4r+6uk8zu11qkuk=",
+			"path": "github.com/labstack/gommon/log",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "lW02E/TGpV59u9q49TsK0Cmva0c=",
+			"path": "github.com/labstack/gommon/random",
+			"revision": "57409ada9da0f2afad6664c49502f8c50fbd8476",
+			"revisionTime": "2017-09-25T05:28:17Z"
+		},
+		{
+			"checksumSHA1": "xpXl7e5TljYukrkekbCHh7uMyk8=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": "6cc8b475d4682021d75d2cbe2bc481bec4ce98e5",
+			"revisionTime": "2018-01-15T15:56:39Z"
+		},
+		{
+			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c",
+			"revisionTime": "2017-11-07T05:05:31Z"
+		},
+		{
+			"checksumSHA1": "CIK3BBNX3nuUQCmNqTQydNfMNKI=",
+			"path": "github.com/mgutz/ansi",
+			"revision": "9520e82c474b0a04dd04f8a40959027271bab992",
+			"revisionTime": "2017-02-06T15:57:36Z"
+		},
+		{
+			"checksumSHA1": "6z9MgcvNbdVGsAIvv6BHA1uALQA=",
+			"path": "github.com/nfnt/resize",
+			"revision": "83c6a9932646f83e3267f353373d47347b6036b2",
+			"revisionTime": "2018-02-21T19:10:11Z"
+		},
+		{
+			"checksumSHA1": "t8jzPFIv4DNACv+cuZoigNmjPLQ=",
+			"path": "github.com/technoweenie/multipartstreamer",
+			"revision": "a90a01d73ae432e2611d178c18367fbaa13e0154",
+			"revisionTime": "2013-10-20T00:18:33Z"
+		},
+		{
+			"checksumSHA1": "LTOa3BADhwvT0wFCknPueQALm8I=",
+			"origin": "github.com/valyala/fasttemplate/vendor/github.com/valyala/bytebufferpool",
+			"path": "github.com/valyala/bytebufferpool",
+			"revision": "dcecefd839c4193db0d35b88ec65b4c12d360ab0",
+			"revisionTime": "2017-02-24T21:24:29Z"
+		},
+		{
+			"checksumSHA1": "gtG8jeB0fcTmKZf+6Vbcoa6nfec=",
+			"path": "github.com/valyala/fasttemplate",
+			"revision": "dcecefd839c4193db0d35b88ec65b4c12d360ab0",
+			"revisionTime": "2017-02-24T21:24:29Z"
+		},
+		{
+			"checksumSHA1": "CSMVjFF7FnylAUUKW1e/4r+VFXA=",
+			"path": "golang.org/x/crypto/acme",
+			"revision": "0fcca4842a8d74bfddc2c96a073bd2a4d2a7a2e8",
+			"revisionTime": "2017-11-25T19:00:56Z"
+		},
+		{
+			"checksumSHA1": "4JU5m5FGcmRYDq/oPlwQC+K8TYA=",
+			"path": "golang.org/x/crypto/acme/autocert",
+			"revision": "0fcca4842a8d74bfddc2c96a073bd2a4d2a7a2e8",
+			"revisionTime": "2017-11-25T19:00:56Z"
+		},
+		{
+			"checksumSHA1": "9g96volvhWZLeacGbgux56rgvvw=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "665f6529cca930e27b831a0d1dafffbe1c172924",
+			"revisionTime": "2017-11-13T12:29:10Z"
+		},
+		{
+			"checksumSHA1": "2+UDB3cfq6FOSrctho3OnjocNiY=",
+			"path": "gopkg.in/AlecAivazis/survey.v1",
+			"revision": "0aa8b6a162b391fe2d95648b7677d1d6ac2090a6",
+			"revisionTime": "2017-11-11T17:35:11Z"
+		},
+		{
+			"checksumSHA1": "ckCqJwqB0DafDyU7tgv8KNr6qes=",
+			"path": "gopkg.in/AlecAivazis/survey.v1/core",
+			"revision": "0aa8b6a162b391fe2d95648b7677d1d6ac2090a6",
+			"revisionTime": "2017-11-11T17:35:11Z"
+		},
+		{
+			"checksumSHA1": "utSdFJ9XTVTYaqPg+csCg66TEW0=",
+			"path": "gopkg.in/AlecAivazis/survey.v1/terminal",
+			"revision": "0aa8b6a162b391fe2d95648b7677d1d6ac2090a6",
+			"revisionTime": "2017-11-11T17:35:11Z"
+		},
+		{
+			"checksumSHA1": "Yx1MU40fyGe7hhqW9+dkv8kXa60=",
+			"path": "gopkg.in/urfave/cli.v1",
+			"revision": "cfb38830724cc34fedffe9a2a29fb54fa9169cd1",
+			"revisionTime": "2017-08-11T01:42:03Z"
+		}
+	],
+	"rootPath": "github.com/eternnoir/tgsticmaker"
+}
