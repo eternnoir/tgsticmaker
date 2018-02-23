@@ -1,0 +1,64 @@
+<div fxFlex fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+  <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" #stepper>
+
+
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your sticker info</ng-template>
+        <div fxLayout="row" fxLayoutAlign=" center">
+          <p fxFlex="0 0 auto">
+            1. Start chat to:
+            </p>
+            <a href="https://t.me/SitcmakerBot" fxFlex="0 0 auto">SitcmakerBot</a>
+        </div>
+        <div fxLayout="row" fxLayoutAlign=" center">
+          <p fxFlex="0 0 auto">
+            2. Get your user id from:
+          </p>
+          <a href="https://t.me/userinfobot" fxFlex="">userinfobot</a>
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="User ID" formControlName="userId" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Sticker Name" formControlName="stickerName" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Sticker Title" formControlName="stickerTitle" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext (click)="checkStickerSetExist($event)">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step >
+      <ng-template matStepLabel>Upload your sticker files</ng-template>
+      <p *ngIf="stickerSetExistWarning">Sticker is already exist!!!!</p>
+      <label for="file">Choose File</label>
+      <input type="file"
+             id="file"
+             multiple
+             (change)="handleFileInput($event.target.files)">
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="upload()">Upload</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Result</ng-template>
+      <div *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="!loading">
+        You are now done.
+        <div>
+          <a mat-button color="primary" [href]="'https://t.me/addstickers/'+finalStickerName">Show my sticker set</a>
+        </div>
+        <div>
+          <button mat-button (click)="stepper.reset()">Add another</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
