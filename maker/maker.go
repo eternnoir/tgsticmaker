@@ -106,7 +106,6 @@ func formatStickerName(name, botname string) string {
 
 func ResizeImage(img image.Image) ([]byte, error) {
 	size := uint(512)
-	offset := uint(10)
 	m := img
 	var ret []byte
 	for {
@@ -118,7 +117,7 @@ func ResizeImage(img image.Image) ([]byte, error) {
 			return nil, err
 		}
 		if len(buf.Bytes()) > PNGSIZELIMIT {
-			size = size - offset
+			size = size / 2
 		} else {
 			ret = buf.Bytes()
 			break
